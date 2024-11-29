@@ -24,3 +24,7 @@ You can edit the **lua** files to change:
 - Weapons
 - Descriptions
 - Slots
+
+
+# Helpful Links
+- https://www.yourdevtools.com/ (Tools you can use for Garry's Mod to make job making and other creation go faster)
