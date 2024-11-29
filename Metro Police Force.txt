@@ -1,0 +1,149 @@
+-- Metro Police Force Category
+DarkRP.createCategory {
+    name = "Metro Police Force",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(0, 0, 255), -- Blue color for the police force
+    sortOrder = 1000,
+    canSee = function(ply)
+        return true
+    end,
+}
+
+-- METRO POLICE FORCE + MAYOR
+-- Metro Police Recruit
+TEAM_MPR_RECRUIT = DarkRP.createJob("Metro Police Recruit", {
+    color = Color(255, 255, 255),
+    model = "models/player/barney.mdl",
+    description = [[
+        A fresh recruit to the Metro Police Force. Limited equipment.
+    ]],
+    weapons = {
+        "weapon_pistol",
+        "arrest_stick",
+        "unarrest_stick"
+    },
+    command = "mprrecruit",
+    max = 3,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Metro Police Force",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 1, -- Recruit first (lowest)
+})
+
+-- Metro Police Officer
+TEAM_MPR_OFFICER = DarkRP.createJob("Metro Police Officer", {
+    color = Color(0, 0, 255),
+    model = "models/player/police.mdl",
+    description = [[
+        A full-fledged officer in the Metro Police Force.
+    ]],
+    weapons = {
+        "weapon_pistol",
+        "weapon_smg1",
+        "arrest_stick",
+        "unarrest_stick"
+    },
+    command = "mprofficer",
+    max = 4,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Metro Police Force",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 2, -- Officer second
+})
+
+-- Metro Police Sergeant
+TEAM_MPR_SGT = DarkRP.createJob("Metro Police Sergeant", {
+    color = Color(0, 0, 255),
+    model = "models/player/combine_soldier.mdl",
+    description = [[
+        A Sergeant in the Metro Police Force, with more equipment and authority.
+    ]],
+    weapons = {
+        "weapon_pistol",
+        "weapon_smg1",
+        "weapon_shotgun",
+        "arrest_stick",
+        "unarrest_stick"
+    },
+    command = "mprsgt",
+    max = 2,
+    salary = 0,
+    admin = 0,
+    vote = true,
+    hasLicense = true,
+    category = "Metro Police Force",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 3, -- Sergeant third
+})
+
+-- Metro Police Chief
+TEAM_MPR_CHIEF = DarkRP.createJob("Metro Police Chief", {
+    color = Color(0, 0, 255),
+    model = "models/player/combine_soldier_prisonguard.mdl",
+    description = [[
+        The Chief of the Metro Police Force. The highest rank of the police force.
+    ]],
+    weapons = {
+        "weapon_pistol",
+        "weapon_smg1",
+        "weapon_shotgun",
+        "weapon_ar2",
+        "weapon_revolver",
+        "arrest_stick",
+        "unarrest_stick"
+    },
+    command = "mprchief",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = true,
+    hasLicense = true,
+    category = "Metro Police Force",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 4, -- Chief fourth (highest)
+})
+
+-- Mayor Job
+TEAM_MAYOR = DarkRP.createJob("Mayor", {
+    color = Color(255, 255, 255),
+    model = "models/player/breen.mdl",
+    description = [[
+        The Mayor of the city. Has basic law enforcement privileges and authority.
+    ]],
+    weapons = {
+        "arrest_stick",
+        "unarrest_stick"
+    },
+    command = "mayor",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = true,
+    hasLicense = true,
+    category = "Metro Police Force",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 5, -- Mayor last
+    armor = 50 -- 50 Armor for the Mayor
+})
