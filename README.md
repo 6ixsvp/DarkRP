@@ -1,5 +1,7 @@
 # Garry's Mod DarkRP Jobs and Addons
 
+# WORK IN PROGRESS, WILL KEEP ADDING STUFF AS I GO AND WILL FIX UP READ ME.
+
 This repository contains custom jobs and roles for the **DarkRP** gamemode in **Garry's Mod**. It adds new staff roles, police ranks, and unique "Weird Jobs" to enhance your server experience.
 
 ## Features
