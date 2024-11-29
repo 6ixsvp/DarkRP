@@ -1,0 +1,157 @@
+-- Staff Job Category
+DarkRP.createCategory {
+    name = "Staff",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(50, 50, 50), -- A darker color for contrast
+    sortOrder = 999,
+    canSee = function(ply) 
+         return true 
+    end,
+}
+
+-- Staff Jobs with Weapons, Custom Slots, and Sort Order
+TEAM_TMOD = DarkRP.createJob("Trial Mod", {
+    color = Color(0, 0, 0),
+    model = "models/player/combine_super_soldier.mdl",
+    description = [[
+        A Trial Moderator who is learning the ropes of server moderation.
+    ]],
+    weapons = { 
+        "arrest_stick", 
+        "door_ram", 
+        "stunstick", 
+        "unarrest_stick", 
+        "weapon_keypadchecker", 
+        "weapon_fists" 
+    },
+    command = "tmod",
+    max = 5,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Staff",
+    canDemote = false,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({"STEAMID_HERE"}, ply:SteamID()) -- Placeholder for SteamID
+    end,
+    CustomCheckFailMsg = "You must be a Trial Mod to use this job!",
+    sortOrder = 1, -- TMOD first (lowest)
+})
+
+TEAM_MOD = DarkRP.createJob("Mod", {
+    color = Color(0, 0, 0),
+    model = "models/player/combine_super_soldier.mdl",
+    description = [[
+        A Moderator who can manage the server and enforce rules.
+    ]],
+    weapons = { 
+        "arrest_stick", 
+        "door_ram", 
+        "stunstick", 
+        "unarrest_stick", 
+        "weapon_keypadchecker", 
+        "weapon_fists" 
+    },
+    command = "mod",
+    max = 5,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Staff",
+    canDemote = false,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({"STEAMID_HERE"}, ply:SteamID()) -- Placeholder for SteamID
+    end,
+    CustomCheckFailMsg = "You must be a Mod to use this job!",
+    sortOrder = 2, -- MOD second
+})
+
+TEAM_ADMIN = DarkRP.createJob("Admin", {
+    color = Color(0, 0, 0),
+    model = "models/player/combine_super_soldier.mdl",
+    description = [[
+        An Administrator who has full access to manage the server and its rules.
+    ]],
+    weapons = { 
+        "arrest_stick", 
+        "door_ram", 
+        "stunstick", 
+        "unarrest_stick", 
+        "weapon_keypadchecker", 
+        "weapon_fists" 
+    },
+    command = "admin",
+    max = 4,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Staff",
+    canDemote = false,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({"STEAMID_HERE"}, ply:SteamID()) -- Placeholder for SteamID
+    end,
+    CustomCheckFailMsg = "You must be an Admin to use this job!",
+    sortOrder = 3, -- Admin third
+})
+
+TEAM_SUPERADMIN = DarkRP.createJob("Super Admin", {
+    color = Color(0, 0, 0),
+    model = "models/player/combine_super_soldier.mdl",
+    description = [[
+        A Super Administrator who has the highest level of control over the server.
+    ]],
+    weapons = { 
+        "arrest_stick", 
+        "door_ram", 
+        "stunstick", 
+        "unarrest_stick", 
+        "weapon_keypadchecker", 
+        "weapon_fists" 
+    },
+    command = "superadmin",
+    max = 8,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Staff",
+    canDemote = false,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({"STEAMID_HERE"}, ply:SteamID()) -- Placeholder for SteamID
+    end,
+    CustomCheckFailMsg = "You must be a Super Admin to use this job!",
+    sortOrder = 4, -- Super Admin fourth
+})
+
+TEAM_OWNER = DarkRP.createJob("OWNER", {
+    color = Color(0, 0, 0),
+    model = "models/player/combine_super_soldier.mdl",
+    description = [[
+        The Owner has full control over the server and its settings.
+    ]],
+    weapons = { 
+        "arrest_stick", 
+        "door_ram", 
+        "stunstick", 
+        "unarrest_stick", 
+        "weapon_keypadchecker", 
+        "weapon_fists" 
+    },
+    command = "owner",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Staff",
+    canDemote = false,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({"STEAMID_HERE"}, ply:SteamID()) -- Placeholder for SteamID
+    end,
+    CustomCheckFailMsg = "You must be the Owner to use this job!",
+    sortOrder = 5, -- Owner last (highest)
+})
