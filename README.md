@@ -28,3 +28,5 @@ You can edit the **lua** files to change:
 
 # Helpful Links
 - https://www.yourdevtools.com/ (Tools you can use for Garry's Mod to make job making and other creation go faster)
+- https://www.youtube.com/watch?v=DD3YTMoemzU (Youtube Video showing how to set up a local garrys mod server on your computer to start working on a server)
+- https://wiki.facepunch.com/gmod/ (Garry's Mod Wiki)
