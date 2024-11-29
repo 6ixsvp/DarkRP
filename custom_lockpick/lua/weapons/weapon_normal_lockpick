@@ -1,0 +1,94 @@
+--[[ 
+    Lockpick SWEP Setup for DarkRP
+    You can create more lockpicks by copying and pasting this code into a new file. 
+    Just change the following:
+    - Line 9: Name of the lockpick (e.g., "Fast Lockpick", "Elite Lockpick").
+    - Line 23: The lockpicking time (how long it takes to pick a lock, in seconds).
+]]
+
+if SERVER then
+    AddCSLuaFile()
+end
+
+SWEP.PrintName = "Lockpick" -- Edit here for different lockpick names
+SWEP.Author = "6ixsvp"
+SWEP.Instructions = "Left-click to start lockpicking."
+SWEP.Spawnable = true
+SWEP.AdminSpawnable = true
+SWEP.Category = "Custom Lockpicks"
+SWEP.ViewModel = "models/weapons/c_crowbar.mdl" -- Crowbar model (edit as needed)
+SWEP.WorldModel = "models/weapons/w_crowbar.mdl" -- Crowbar world model (edit as needed)
+SWEP.UseHands = true
+SWEP.Primary.ClipSize = -1
+SWEP.Primary.DefaultClip = -1
+SWEP.Primary.Automatic = false
+SWEP.Primary.Ammo = "none"
+SWEP.Secondary.Ammo = "none"
+SWEP.LockpickTime = 15 -- Seconds (edit here for faster/slower lockpicking time)
+
+-- Set hold type (this ensures it stays at the player's side)
+function SWEP:Initialize()
+    self:SetHoldType("normal") -- Holds the weapon at the player's side
+end
+
+if CLIENT then
+    -- Variables for progress bar
+    local lockpicking = false
+    local startTime = 0
+    local totalTime = 0
+
+    net.Receive("StartLockpicking", function()
+        lockpicking = true
+        startTime = CurTime()
+        totalTime = net.ReadFloat()
+    end)
+
+    net.Receive("StopLockpicking", function()
+        lockpicking = false
+    end)
+
+    -- Draw progress bar UI
+    hook.Add("HUDPaint", "DrawLockpickProgress", function()
+        if not lockpicking then return end
+        local progress = math.Clamp((CurTime() - startTime) / totalTime, 0, 1)
+        draw.RoundedBox(5, ScrW() / 2 - 200, ScrH() / 2 + 100, 400, 25, Color(50, 50, 50, 200))
+        draw.RoundedBox(5, ScrW() / 2 - 200, ScrH() / 2 + 100, 400 * progress, 25, Color(0, 255, 0, 255))
+        draw.SimpleText("Lockpicking...", "DermaDefaultBold", ScrW() / 2, ScrH() / 2 + 112, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    end)
+end
+
+-- Primary fire logic (lockpicking)
+function SWEP:PrimaryAttack()
+    if CLIENT then return end
+
+    local ply = self:GetOwner()
+    local trace = ply:GetEyeTrace()
+
+    if not IsValid(trace.Entity) or not trace.Entity:IsDoor() then
+        ply:ChatPrint("You must aim at a door or lockable entity!")
+        return
+    end
+
+    -- Start lockpicking
+    self:SetNextPrimaryFire(CurTime() + self.LockpickTime)
+    net.Start("StartLockpicking")
+    net.WriteFloat(self.LockpickTime)
+    net.Send(ply)
+
+    timer.Create("LockpickTimer" .. ply:EntIndex(), self.LockpickTime, 1, function()
+        if not IsValid(ply) then return end
+        if not IsValid(trace.Entity) then return end
+
+        trace.Entity:Fire("Unlock")
+        trace.Entity:Fire("Open")
+        ply:ChatPrint("Lockpicking successful!")
+
+        net.Start("StopLockpicking")
+        net.Send(ply)
+    end)
+end
+
+-- Disable secondary attack
+function SWEP:SecondaryAttack()
+    return
+end
