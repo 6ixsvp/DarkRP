@@ -1,0 +1,88 @@
+-- Weird Jobs Category
+DarkRP.createCategory {
+    name = "Weird Jobs",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(255, 0, 255), -- Purple color for Weird Jobs
+    sortOrder = 2000,
+    canSee = function(ply)
+        return true
+    end,
+}
+
+-- Hobo
+TEAM_HOBO = DarkRP.createJob("Hobo", {
+    color = Color(255, 255, 255),
+    model = "models/player/corpse1.mdl",
+    description = [[
+        A homeless individual with minimal weapons. Just trying to get by.
+    ]],
+    weapons = {
+        "weapon_bugbait",
+        "weapon_crowbar"
+    },
+    command = "hobo",
+    max = 4,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Weird Jobs",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 1, -- Hobo first in Weird Jobs
+})
+
+-- Medical Hobo
+TEAM_MEDICALHOBO = DarkRP.createJob("Medical Hobo", {
+    color = Color(255, 255, 255),
+    model = "models/player/soldier_stripped.mdl",
+    description = [[
+        A hobo with a medical background. Has the ability to heal others and move faster.
+    ]],
+    weapons = {
+        "weapon_bugbait",
+        "weapon_crowbar",
+        "weapon_medkit"
+    },
+    command = "medicalhobo",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Weird Jobs",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 2, -- Medical Hobo second in Weird Jobs
+    speed = 1.5 -- Faster movement speed
+})
+
+-- Hobo King
+TEAM_HOBOKING = DarkRP.createJob("Hobo King", {
+    color = Color(255, 255, 255),
+    model = "models/player/charple.mdl",
+    description = [[
+        The ruler of all hobos. Commands the respect of the homeless masses.
+    ]],
+    weapons = {
+        "weapon_bugbait",
+        "weapon_crowbar"
+    },
+    command = "hoboking",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Weird Jobs",
+    canDemote = false,
+    customCheck = function(ply)
+        return true
+    end,
+    sortOrder = 3, -- Hobo King last in Weird Jobs
+})
