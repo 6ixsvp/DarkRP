@@ -1,0 +1,78 @@
+--[[ 
+    Thief Jobs Setup for DarkRP
+
+    This script will create 3 thief jobs with the following properties:
+    - All have the "lockpick" weapon.
+    - "Thief" job will have basic lockpicking and a salary of $20.
+    - "Elite Thief" job will have the same as Thief but with higher status.
+    - "Master Thief" will be the top tier thief with the same perks and higher status.
+]]
+
+-- Thief Category for the Jobs
+DarkRP.createCategory{
+    name = "Criminals",          -- Name of the category (Can be changed)
+    categorises = "jobs",        -- Categorizes these as jobs
+    startExpanded = true,        -- Starts the category expanded (true/false)
+    color = Color(255, 0, 0),    -- Category color (Change the RGB values if needed)
+    sortOrder = 100,             -- Order for the category (lower is higher priority)
+    canSee = function(ply) 
+        return true              -- All players can see the category
+    end,
+}
+
+-- Thief Job
+TEAM_THIEF = DarkRP.createJob("Thief", {
+    color = Color(255, 0, 0),       -- Job color (Change this to fit your theme)
+    model = "models/player/robber.mdl",  -- Model for the Thief (Replace with your desired model)
+    description = "A basic thief, who can lockpick doors and steal.", -- Job description (Edit as needed)
+    weapons = {"lockpick"},         -- Thief starts with a lockpick (Add more weapons if needed)
+    command = "thief",              -- The command to spawn as this job
+    max = 10,                       -- Max slots for this job
+    salary = 20,                    -- Salary for this job (Edit as needed)
+    admin = 0,                      -- 0 means no admin privileges required to use this job
+    vote = false,                   -- Disable vote requirement for this job
+    hasLicense = false,             -- No license required for this job
+    category = "Criminals",         -- Job category
+    canDemote = false,              -- Can't demote this job
+    customCheck = function(ply) 
+        return true                 -- Anyone can play as this job
+    end,
+})
+
+-- Elite Thief Job
+TEAM_ELITE_THIEF = DarkRP.createJob("Elite Thief", {
+    color = Color(255, 0, 0),
+    model = "models/player/robber.mdl", 
+    description = "An experienced thief with greater skills.", -- Change description as needed
+    weapons = {"lockpick"},         -- Elite Thief also gets a lockpick (Add more weapons here)
+    command = "elitethief",         -- Command to spawn as Elite Thief
+    max = 5,                        -- Max slots for this job
+    salary = 40,                    -- Elite Thief salary
+    admin = 0,
+    vote = false,                   -- No vote needed to spawn this job
+    hasLicense = false,
+    category = "Criminals",         
+    canDemote = false,              
+    customCheck = function(ply) 
+        return true
+    end,
+})
+
+-- Master Thief Job
+TEAM_MASTER_THIEF = DarkRP.createJob("Master Thief", {
+    color = Color(255, 0, 0),
+    model = "models/player/robber.mdl", 
+    description = "The top-tier thief, masters of their craft.", -- Change description as needed
+    weapons = {"lockpick"},         -- Master Thief also gets a lockpick (Add more weapons here)
+    command = "masterthief",        -- Command to spawn as Master Thief
+    max = 3,                        -- Max slots for this job
+    salary = 60,                    -- Master Thief salary
+    admin = 0,
+    vote = false,                   -- No vote needed for this job
+    hasLicense = false,
+    category = "Criminals",         
+    canDemote = false,              
+    customCheck = function(ply) 
+        return true
+    end,
+})
