@@ -1,0 +1,140 @@
+--[[ 
+    Police Force Jobs Setup for DarkRP 
+    This is an easy-to-edit configuration for creating Police-related jobs.
+    You can change things like salary, model, or equipment by editing the variables below.
+]]
+
+-- Police Force Group
+DarkRP.createCategory {
+    name = "Police Force",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(0, 0, 255),
+    sortOrder = 100,
+    canSee = function(ply) return true end, -- Everyone can see
+}
+
+-- Helper function to generate random salary
+local function getRandomSalary(min, max)
+    return math.random(min, max)
+end
+
+-- Police Job
+TEAM_POLICE = DarkRP.createJob("Police", {
+    color = Color(0, 0, 255),
+    model = "models/player/police.mdl", -- Basic police model
+    description = "A basic police officer who is responsible for keeping the city safe.",
+    weapons = {"arrest_stick", "unarrest_stick"},
+    command = "police",
+    max = 10,
+    salary = getRandomSalary(50, 150), -- Random salary between 50 and 150
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+})
+
+-- Police Medic Job
+TEAM_POLICE_MEDIC = DarkRP.createJob("Police Medic", {
+    color = Color(0, 255, 255),
+    model = "models/player/medic.mdl", -- Medic model (replace with one you want)
+    description = "A police medic who heals and assists injured officers.",
+    weapons = {"arrest_stick", "unarrest_stick"},
+    command = "policemedic",
+    max = 5,
+    salary = getRandomSalary(50, 150), -- Random salary between 50 and 150
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+})
+
+-- SWAT Job
+TEAM_SWAT = DarkRP.createJob("SWAT", {
+    color = Color(255, 0, 0),
+    model = "models/player/swat.mdl", -- SWAT model (replace with one you want)
+    description = "A special weapons and tactics officer equipped for dangerous situations.",
+    weapons = {"arrest_stick", "unarrest_stick", "weapon_smg1", "weapon_shotgun"},
+    command = "swat",
+    max = 4,
+    salary = getRandomSalary(75, 200), -- Random salary between 75 and 200
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+})
+
+-- SWAT Sniper Job
+TEAM_SWAT_SNIPER = DarkRP.createJob("SWAT Sniper", {
+    color = Color(255, 0, 255),
+    model = "models/player/swat_sniper.mdl", -- Sniper model (replace with one you want)
+    description = "A sniper in the SWAT team with a long-range weapon.",
+    weapons = {"arrest_stick", "unarrest_stick", "weapon_ar2", "weapon_sniperrifle"},
+    command = "swatsniper",
+    max = 2,
+    salary = getRandomSalary(100, 250), -- Random salary between 100 and 250
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+})
+
+-- Mayor Bodyguard Job
+TEAM_MAYOR_BODYGUARD = DarkRP.createJob("Mayor Bodyguard", {
+    color = Color(255, 255, 0),
+    model = "models/player/bodyguard.mdl", -- Bodyguard model (replace with one you want)
+    description = "A bodyguard assigned to protect the Mayor.",
+    weapons = {"arrest_stick", "unarrest_stick", "weapon_knife"},
+    command = "mayorbodyguard",
+    max = 3,
+    salary = getRandomSalary(75, 200), -- Random salary between 75 and 200
+    admin = 0,
+    vote = false,
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+})
+
+-- Mayor Job (With 50 Armor and vote)
+TEAM_MAYOR = DarkRP.createJob("Mayor", {
+    color = Color(0, 255, 0),
+    model = "models/player/breen.mdl", -- Mayor model (replace with one you want)
+    description = "The Mayor of the city with power to create laws and decisions.",
+    weapons = {"arrest_stick", "unarrest_stick"},
+    command = "mayor",
+    max = 1,
+    salary = getRandomSalary(150, 500), -- Random salary between 150 and 500
+    admin = 0,
+    vote = true, -- Requires a vote to become Mayor
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = true,
+    customCheck = function(ply) return true end,
+    PlayerLoadout = function(ply) ply:SetArmor(50) end, -- Give 50 Armor to the Mayor
+})
+
+-- Police Chief Job
+TEAM_POLICE_CHIEF = DarkRP.createJob("Police Chief", {
+    color = Color(0, 0, 128),
+    model = "models/player/policechief.mdl", -- Police Chief model (replace with one you want)
+    description = "The Chief of Police overseeing the entire force.",
+    weapons = {"arrest_stick", "unarrest_stick", "weapon_pistol"},
+    command = "policechief",
+    max = 1,
+    salary = getRandomSalary(150, 350), -- Random salary between 150 and 350
+    admin = 0,
+    vote = false, -- No vote needed for Chief
+    hasLicense = true,
+    category = "Police Force",
+    canDemote = false, -- Chief can't be demoted
+    customCheck = function(ply) return true end,
+})
