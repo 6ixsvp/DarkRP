@@ -1,0 +1,47 @@
+## Code to adjust movement speed in jobs:
+
+-- Define the job
+TEAM_EXAMPLE = DarkRP.createJob("Example Job", {
+    color = Color(255, 0, 0, 255),  -- Set the job color (just an example)
+    model = {"models/props_c17/oildrum001.mdl"},  -- Example model
+    description = "This is an example job with custom movement speed.",  -- Job description
+    weapons = {"weapon_pistol"},  -- Weapons this job can have
+    command = "examplejob",  -- Command to spawn as this job
+    max = 2,  -- Max number of players
+    salary = 50,  -- Salary for the job
+    admin = 0,  -- Admin level required (0 means anyone can take it)
+    vote = false,  -- If a vote is required to take the job
+    -- Add the movement speed adjustments here
+    walkSpeed = 250,  -- Normal walk speed is around 200, so 250 is a bit faster
+    runSpeed = 400,  -- Normal run speed is around 500, so 400 is slightly slower than normal
+    -- Custom job model, description, etc.
+})
+
+-- Optional: If you want to dynamically change the speed based on a player's team
+hook.Add("PlayerSpawn", "SetMovementSpeed", function(ply)
+    if ply:Team() == TEAM_EXAMPLE then  -- Check if the player is the "Example Job"
+        ply:SetWalkSpeed(250)  -- Set the custom walk speed
+        ply:SetRunSpeed(400)  -- Set the custom run speed
+    end
+end)
+
+-- NOTES THAT EXPLAIN
+
+Explanation:
+
+    Job Creation:
+    The DarkRP.createJob function defines a new job with various attributes like color, model, weapons, and salary. Inside this definition, you can directly modify the movement speed for walking (walkSpeed) and running (runSpeed).
+
+    Movement Speed:
+        walkSpeed = 250: This makes the walking speed 250 (normal is around 200, so it's a bit faster).
+        runSpeed = 400: This makes the running speed 400 (normal is around 500, so it's slightly slower but still fast).
+
+    Optional Hook for Dynamic Speed Change:
+    The hook.Add("PlayerSpawn", "SetMovementSpeed", function(ply) listens for when a player spawns. If the player is on the specified team (in this case, TEAM_EXAMPLE), it adjusts their walking and running speeds dynamically. You can modify this hook to apply the movement speed to other jobs as well by adding conditions for different teams.
+
+Where to add it:
+
+    You should add the movement speed properties (walkSpeed and runSpeed) directly inside the DarkRP.createJob function in your jobs file for each job that requires custom movement speeds.
+    The hook.Add("PlayerSpawn", "SetMovementSpeed", function(ply) can be placed at the bottom of your job definition to handle dynamic movement speed adjustments whenever a player spawns.
+
+This setup ensures that the players with this job will have the desired movement speeds without affecting the rest of the game.
