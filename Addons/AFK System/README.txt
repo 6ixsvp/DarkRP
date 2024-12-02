@@ -1,3 +1,5 @@
+Created by : 6ixsvp
+
 Key Features
 
     /afk Command: Players type /afk in chat to enter AFK mode.
