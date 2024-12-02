@@ -1,0 +1,39 @@
+-- Add these to your DarkRP jobs file (e.g., `darkrp_custom_jobs.lua`). MAKE SURE YOU CREATE A JOB CATEGORY FOR THESE OR USE THE ONE PROVIDED
+
+-- Job Category 
+DarkRP.createCategory{
+    name = "Gangs",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(255, 0, 0),
+    canSee = function(ply) return true end,
+    sortOrder = 100,
+}
+-- Blood Jobs
+TEAM_BLOODLEADER = DarkRP.createJob("Blood Leader", {
+    color = Color(255, 0, 0), -- Red for Blood Gang
+    model = "models/player/Group01/male_07.mdl", -- Placeholder model
+    description = [[The leader of the Blood Gang. Commands respect from members and engages in gang activities.]],
+    weapons = {"weapon_pistol"},
+    command = "bloodleader",
+    max = 1,
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
+
+TEAM_BLOODMEMBER = DarkRP.createJob("Blood Member", {
+    color = Color(255, 0, 0), -- Red for Blood Gang
+    model = "models/player/Group01/male_06.mdl", -- Placeholder model
+    description = [[A member of the Blood Gang. Follows the leader and engages in criminal activities.]],
+    weapons = {},
+    command = "bloodmember",
+    max = 4,
+    salary = 35,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
