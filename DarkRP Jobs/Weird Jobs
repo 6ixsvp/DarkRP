@@ -1,0 +1,95 @@
+-- **Weird Category**
+DarkRP.createCategory{
+    name = "Weird", -- Category name displayed in the F4 menu
+    categorises = "jobs", -- This is a job category
+    startExpanded = true, -- Category starts expanded
+    color = Color(128, 0, 128), -- Purple for "Weird" vibe
+    canSee = function(ply) return true end, -- Everyone can see this category
+    sortOrder = 200, -- Determines the order in the list
+}
+
+-- **Weird Jobs**
+
+TEAM_RAT = DarkRP.createJob("Rat", {
+    color = Color(139, 69, 19), -- Brown for a rat-like vibe
+    model = "models/props_c17/doll01.mdl", -- A small, rat-like placeholder model
+    description = [[You are a filthy rat. Scavenge for scraps and hide in the shadows.]],
+    weapons = {},
+    command = "rat",
+    max = 2,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
+
+TEAM_CAT = DarkRP.createJob("Cat", {
+    color = Color(255, 255, 0), -- Yellow for feline energy
+    model = "models/player/cat.mdl", -- Placeholder cat model
+    description = [[You are a cat. Be cute, curious, and maybe steal food from others.]],
+    weapons = {},
+    command = "cat",
+    max = 2,
+    salary = 10,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
+
+TEAM_DOG = DarkRP.createJob("Dog", {
+    color = Color(165, 42, 42), -- Brown for a dog vibe
+    model = "models/player/dog.mdl", -- Placeholder dog model
+    description = [[You are a loyal dog. Bark at strangers and beg for food.]],
+    weapons = {},
+    command = "dog",
+    max = 2,
+    salary = 10,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
+
+TEAM_STALKER = DarkRP.createJob("Stalker", {
+    color = Color(0, 0, 0), -- Black for stealth
+    model = "models/player/Group01/male_01.mdl", -- Placeholder model
+    description = [[You are a stalker. Follow people around, stay in the shadows, and be creepy.]],
+    weapons = {},
+    command = "stalker",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
+
+TEAM_VETERAN = DarkRP.createJob("Veteran", {
+    color = Color(128, 128, 128), -- Gray for a veteran look
+    model = "models/player/Group03/male_07.mdl", -- Placeholder model
+    description = [[You are a war veteran. Share stories or protect the innocent.]],
+    weapons = {"weapon_pistol"},
+    command = "veteran",
+    max = 1,
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
+
+TEAM_HIDEFIGURE = DarkRP.createJob("Hideous Figure", {
+    color = Color(128, 0, 0), -- Dark red for danger
+    model = "models/player/charple.mdl", -- Creepy charred model
+    description = [[You are a hideous figure, feared by all. You can be killed or arrested on sight.]],
+    weapons = {},
+    command = "hidefigure",
+    max = 1,
+    salary = 0,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Weird"
+})
