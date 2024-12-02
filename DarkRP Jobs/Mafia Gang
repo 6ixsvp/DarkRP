@@ -1,0 +1,37 @@
+-- Job Category
+DarkRP.createCategory{
+    name = "Gangs",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(255, 0, 0),
+    canSee = function(ply) return true end,
+    sortOrder = 100,
+}
+-- Mafia Jobs
+TEAM_MAFIALEADER = DarkRP.createJob("Mafia Leader", {
+    color = Color(0, 0, 0), -- Black for Mafia
+    model = "models/player/Group01/male_04.mdl", -- Placeholder model
+    description = [[The leader of the Mafia. Commands a dangerous criminal organization.]],
+    weapons = {"weapon_pistol"},
+    command = "mafialeader",
+    max = 1,
+    salary = 60,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
+
+TEAM_MAFIAMEMBER = DarkRP.createJob("Mafia Member", {
+    color = Color(0, 0, 0), -- Black for Mafia
+    model = "models/player/Group01/male_08.mdl", -- Placeholder model
+    description = [[A loyal member of the Mafia, engaging in organized crime.]],
+    weapons = {},
+    command = "mafiamember",
+    max = 5,
+    salary = 40,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
