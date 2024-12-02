@@ -1,0 +1,40 @@
+-- Add these to your DarkRP jobs file (e.g., `darkrp_custom_jobs.lua`).
+
+-- Job Category
+DarkRP.createCategory{
+    name = "Gangs",
+    categorises = "jobs",
+    startExpanded = true,
+    color = Color(255, 0, 0),
+    canSee = function(ply) return true end,
+    sortOrder = 100,
+}
+
+-- Crip Jobs
+TEAM_CRIPLEADER = DarkRP.createJob("Crip Leader", {
+    color = Color(0, 0, 255), -- Blue for Crips
+    model = "models/player/Group01/male_09.mdl", -- Placeholder model
+    description = [[The leader of the Crips. Commands respect from members and engages in gang activities.]],
+    weapons = {"weapon_pistol"},
+    command = "cripleader",
+    max = 1,
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
+
+TEAM_CRIPMEMBER = DarkRP.createJob("Crip Member", {
+    color = Color(0, 0, 255), -- Blue for Crips
+    model = "models/player/Group01/male_05.mdl", -- Placeholder model
+    description = [[A member of the Crips. Follows the leader and engages in criminal activities.]],
+    weapons = {},
+    command = "cripmember",
+    max = 4,
+    salary = 35,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Gangs"
+})
