@@ -28,3 +28,4 @@ Enjoy and have fun building your DarkRP server!
 - https://www.yourdevtools.com/ (Tools you can use for Garry's Mod to make job making and other creation go faster)
 - https://www.youtube.com/watch?v=DD3YTMoemzU (Youtube Video showing how to set up a local garrys mod server on your computer to start working on a server)
 - https://wiki.facepunch.com/gmod/ (Garry's Mod Wiki)
+- https://chatgpt.com/ (AI tool you can use to help write code or run ideas by, keep in mind chatgpt is not always right, FACT CHECK!!)
