@@ -1,4 +1,4 @@
-# Welcome to the DarkRP Resources Hub!
+# Welcome to the DarkRP Resources Hub! | This is no longer being worked on 9/5/25
 
 This repository is your go-to place for everything related to the **DarkRP gamemode** for Garry's Mod. Whether you're a new server owner or a seasoned veteran, you'll find useful tools, guides, and addons to enhance your DarkRP experience.
 
